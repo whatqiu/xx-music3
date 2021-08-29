@@ -1,24 +1,43 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const Recommend = () => import('@/views/recommend'/* webpackChunkName: "recommend" */)
+const Singer = () => import('@/views/singer'/* webpackChunkName: "singer" */)
+const TopList = () => import('@/views/top-list'/* webpackChunkName: "top-list" */)
+const Search = () => import('@/views/search'/* webpackChunkName: "search" */)
+// const SingerDetail = () => import('@/views/singer-detail'/* webpackChunkName: "singer-detail" */)
+// const Album = () => import('@/views/album'/* webpackChunkName: "album" */)
+// const TopDetail = () => import('@/views/top-detail'/* webpackChunkName: "top-detail" */)
+const UserCenter = () => import('@/views/user-center'/* webpackChunkName: "user-center" */)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    redirect: '/recommend'
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/recommend',
+    component: Recommend
+  },
+  {
+    path: '/singer',
+    component: Singer
+  },
+  {
+    path: '/top-list',
+    component: TopList
+  },
+  {
+    path: '/search',
+    component: Search
+  },
+  {
+    path: '/user',
+    component: UserCenter
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
