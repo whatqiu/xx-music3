@@ -2,7 +2,7 @@
   <div class="slider" ref="rootRef">
     <div class="slider-group">
       <div class="slider-page" v-for="item in sliders" :key="item.id">
-        <a href="#">
+        <a href="">
           <img :src="item.pic" />
         </a>
       </div>
@@ -16,7 +16,7 @@
       </span>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
@@ -48,7 +48,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-// @import url(); 引入公共css类
 .slider {
   position: relative;
   min-height: 1px;

@@ -1,37 +1,14 @@
 <template>
   <div class="recommend">
-    <scroll class="recommend-content">
+    <!-- <scroll class="recommend-content">
       <div>
         <div class="slider-wrapper">
           <div class="slider-content">
             <slider v-if="sliders.length" :sliders="sliders"></slider>
           </div>
         </div>
-        <div class="recommend-list">
-          <h1 class="list-title">热门歌单推荐</h1>
-          <ul>
-            <li
-              v-for="item in albums"
-              class="item"
-              :key="item.id"
-              @click="selectItem(item)"
-            >
-              <div class="icon">
-                <img width="60" height="60" :src="item.pic">
-              </div>
-              <div class="text">
-                <h2 class="name">
-                  {{ item.username }}
-                </h2>
-                <p class="title">
-                  {{item.title}}
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
       </div>
-    </scroll>
+    </scroll> -->
   </div>
 </template>
 
@@ -39,15 +16,14 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 import { getRecommend } from '@/service/recommend'
-import Slider from '../components/base/slider/slider'
-import Scroll from '../components/base/scroll/scroll.vue'
+// import Slider from '../components/base/slider/slider'
+// import Scroll from '../components/base/scroll/scroll.vue'
 
 export default {
 // import引入的组件需要注入到对象中才能使用
 	name: 'recommend',
 	components: {
-		Slider,
-    Scroll
+		// Slider
 	},
 	data() {
 	// 这里存放数据
