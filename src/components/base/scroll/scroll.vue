@@ -1,5 +1,5 @@
 <template>
-<div >
+<div ref="rootRef">
 <slot></slot>
 </div>
 </template>

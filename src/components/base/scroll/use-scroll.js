@@ -9,7 +9,7 @@ export default function useScroll (wrapperRef, options) {
 
 	onMounted(() => {
 		scroll.value = new BScroll(wrapperRef.value, {
-			ObserveDOM: true,
+			observeDOM: true,
 			...options
 		})
 	})
