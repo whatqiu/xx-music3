@@ -1,8 +1,8 @@
 import BScroll from '@better-scroll/core'
 import { onMounted, onUnmounted, ref } from 'vue'
-// import ObserveDOM from '@better-scroll/observe-dom'
+import ObserveDOM from '@better-scroll/observe-dom'
 
-// BScroll.use(ObserveDOM)
+BScroll.use(ObserveDOM)
 
 export default function useScroll (wrapperRef, options) {
 	const scroll = ref(null)
