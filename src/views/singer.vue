@@ -1,6 +1,11 @@
 <template>
-<div class='singer'>
-	<span>singer</span>
+<div class='singer' v-loading="!singers.length">
+	<index-list
+		:data="singers"
+		@select="selectSinger"
+	>
+	</index-list>
+	<router-view :singers="selectSinger"></router-view>
 </div>
 </template>
 
@@ -8,23 +13,41 @@
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
 // 例如：import 《组件名称》 from '《组件路径》';
 	import { getSingerList } from '@/service/singer'
+	import IndexList from '@/components/base/index-list/index-list'
 
 export default {
 // import引入的组件需要注入到对象中才能使用
 	name: 'singer',
 	async created() {
 		const result = await getSingerList()
-		console.log(result)
+		this.singers = result.singers
 	},
-	components: {},
+	methods: {
+		selectSinger(singer) {
+			this.selectSinger = singer
+			this.$router.push({
+				path: `/singer/${singer.mid}`
+			})
+		}
+	},
+	components: {
+		IndexList
+	},
 	data() {
 	// 这里存放数据
-	return {}
+	return {
+		singers: []
+	}
 	}
 }
 </script>
 
 <style lang='scss' scoped>
 // @import url(); 引入公共css类
-
+.singer{
+	position: fixed;
+	width: 100%;
+	top: 80px;
+	bottom: 0;
+}
 </style>
