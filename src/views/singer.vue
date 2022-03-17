@@ -5,7 +5,7 @@
 		@select="selectSinger"
 	>
 	</index-list>
-	<router-view :singers="selectSinger"></router-view>
+	<router-view :singers="selectedSinger"></router-view>
 </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 	},
 	methods: {
 		selectSinger(singer) {
-			this.selectSinger = singer
+			this.selectedSinger = singer
 			this.$router.push({
 				path: `/singer/${singer.mid}`
 			})
@@ -36,7 +36,8 @@ export default {
 	data() {
 	// 这里存放数据
 	return {
-		singers: []
+		singers: [],
+		selectedSinger: null
 	}
 	}
 }
