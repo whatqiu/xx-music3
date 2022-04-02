@@ -1,25 +1,45 @@
 <template>
 <div class='singer-detail'>
+<music-list
+	:songs="songs"
+	:pic="pic"
+	:tltle="title"
+></music-list>
 </div>
 </template>
 
 <script>
 import { getSingerDetail } from '@/service/singer'
+import { processSongs } from '@/service/song'
+import MusicList from '@/components/music-list/music-list'
 
 export default {
-// import引入的组件需要注入到对象中才能使用
 	name: 'singer-detail',
+	components: {
+		MusicList
+	},
 	props: {
 		singer: Object
 	},
-	async created() {
-		// console.log(this.singer)
-		const result = await getSingerDetail(this.singer)
-		console.log(result)
-	},
 	data() {
 	// 这里存放数据
-	return {}
+	return {
+		songs: []
+	}
+	},
+	async created() {
+		const result = await getSingerDetail(this.singer)
+		this.songs = await processSongs(result.songs)
+		// console.log(result)
+		// console.log(songs)
+	},
+	computed: {
+		pic() {
+			return this.singer && this.singer.pic
+		},
+		title() {
+			return this.singer && this.singer.name
+		}
 	}
 }
 </script>

@@ -30,8 +30,8 @@
 	</div>
 
 	<div class="shortcut"
-      @touchstart.stop.prevent="onShortcutTouchStart"
-      @touchmove.stop.prevent="onShortcutTouchMove"
+      @touchstart.stop.prevent.passive="onShortcutTouchStart"
+      @touchmove.stop.prevent.passive="onShortcutTouchMove"
       @touchend.stop.prevent
   >
 		<ul>
