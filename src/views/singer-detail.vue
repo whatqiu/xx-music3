@@ -30,8 +30,6 @@ export default {
 	async created() {
 		const result = await getSingerDetail(this.singer)
 		this.songs = await processSongs(result.songs)
-		// console.log(result)
-		// console.log(songs)
 	},
 	computed: {
 		pic() {
