@@ -1,10 +1,8 @@
 <template>
-<div>
     <m-header></m-header>
     <tab></tab>
     <router-view></router-view>
     <player></player>
-</div>
 </template>
 
 <script>

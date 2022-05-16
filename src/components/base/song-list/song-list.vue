@@ -2,7 +2,7 @@
   <ul class="song-list">
     <li
       class="item"
-      v-for="(song) in songs"
+      v-for="(song,index) in songs"
       :key="song.id"
       @click="selectItem(song, index)"
     >

@@ -17,3 +17,12 @@ export function randomPlay({ commit }, list) {
 	commit('setPlaylist', shuffle(list))
 	commit('setCurrentIndex', 0)
 }
+
+export function changeMode({ commit, state }, mode) {
+	if (mode === PLAY_MODE.random) {
+		commit('setPlaylist', shuffle(state.sequenceList))
+	} else {
+		commit('setPlaylist', state.sequenceList)
+	}
+	commit('setPlayMode', mode)
+}
