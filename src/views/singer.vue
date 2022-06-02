@@ -11,7 +11,7 @@
 
 <script>
 	import { getSingerList } from '@/service/singer'
-	import IndexList from '@/components/base/index-list/index-list'
+	import IndexList from '@/components/index-list/index-list'
 
 export default {
 // import引入的组件需要注入到对象中才能使用

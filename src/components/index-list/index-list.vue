@@ -30,8 +30,8 @@
 	</div>
 
 	<div class="shortcut"
-      @touchstart.stop.prevent.passive="onShortcutTouchStart"
-      @touchmove.stop.prevent.passive="onShortcutTouchMove"
+      @touchstart.stop.prevent="onShortcutTouchStart"
+      @touchmove.stop.prevent="onShortcutTouchMove"
       @touchend.stop.prevent
   >
 		<ul>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import Scroll from '../scroll/scroll.vue'
+import Scroll from '@/components/wrap-scroll/index'
 import useFixed from './use-fixed'
 import useShortcut from './use-shortcut'
 
