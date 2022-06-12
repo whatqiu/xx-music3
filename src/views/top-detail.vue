@@ -1,24 +1,25 @@
 <template>
-<div class='singer-detail'>
-<music-list
+<div class='top-detail'>
+	<music-list
 	:songs="songs"
+	:title="title"
 	:pic="pic"
-	:tltle="title"
-></music-list>
+	:loading="loading"
+	rank
+	></music-list>
 </div>
 </template>
 
 <script>
-import { getSingerDetail } from '@/service/singer'
 import createDetailComponent from '@/assets/js/create-detail-component'
-import { SINGER_KEY } from '@/assets/js/constant'
+import { TOP_KEY } from '@/assets/js/constant'
+import { getTopDetail } from '@/service/top-list'
 
-export default createDetailComponent('singer-detail', SINGER_KEY, getSingerDetail)
-
+export default createDetailComponent('top-detail', TOP_KEY, getTopDetail)
 </script>
 
 <style lang='scss' scoped>
-  .singer-detail {
+.top-detail {
     position: fixed;
     z-index: 10;
     top: 0;

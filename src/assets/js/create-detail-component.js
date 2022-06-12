@@ -40,6 +40,7 @@ export default function createDetailComponent(name, key, fetch) {
     },
     async created() {
       const data = this.computedData
+      // console.log(this.$route.matched.path)
       if (!data) {
         const path = this.$route.matched[0].path
         this.$router.push({

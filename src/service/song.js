@@ -1,5 +1,6 @@
 import { get } from './base'
 
+// 理解万岁
 export function processSongs(songs) {
 	if (!songs.length) {
 		return Promise.resolve(songs)

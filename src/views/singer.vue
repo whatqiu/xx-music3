@@ -5,16 +5,21 @@
 		@select="selectSinger"
 	>
 	</index-list>
-	<router-view :singer="selectedSinger"></router-view>
+    <router-view v-slot="{ Component }">
+      <transition appear name="slide">
+        <component :is="Component" :data="selectedSinger"/>
+      </transition>
+    </router-view>
 </div>
 </template>
 
 <script>
 	import { getSingerList } from '@/service/singer'
 	import IndexList from '@/components/index-list/index-list'
+	import storage from 'good-storage'
+	import { SINGER_KEY } from '@/assets/js/constant'
 
 export default {
-// import引入的组件需要注入到对象中才能使用
 	name: 'singer',
 	async created() {
 		const result = await getSingerList()
@@ -23,9 +28,13 @@ export default {
 	methods: {
 		selectSinger(singer) {
 			this.selectedSinger = singer
+			this.cacheSinger(singer)
 			this.$router.push({
 				path: `/singer/${singer.mid}`
 			})
+		},
+		cacheSinger(singer) {
+			storage.session.get(SINGER_KEY, singer)
 		}
 	},
 	components: {
@@ -42,7 +51,6 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-// @import url(); 引入公共css类
 .singer{
 	position: fixed;
 	width: 100%;

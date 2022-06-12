@@ -66,7 +66,8 @@
         type: Array,
         default() {
           return []
-        }
+        },
+        rank: Boolean
       },
       title: String,
       pic: String,
@@ -88,7 +89,7 @@
       noResult() {
         return !this.loading && !this.songs.length
       },
-      // 随机播放按钮消失
+      // 播放按钮消失
       playBtnStyle() {
         let display = ''
         if (this.scrollY >= this.maxTranslateY) {
