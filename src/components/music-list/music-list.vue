@@ -34,6 +34,7 @@
       class="list"
       :style="scrollStyle"
       v-loading="loading"
+      v-no-result="noResult"
       :probe-type="3"
       @scroll="onScroll"
     >

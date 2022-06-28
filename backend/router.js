@@ -637,7 +637,8 @@ function registerHotKeys(app) {
 // 注册搜索查询接口
 function registerSearch(app) {
   app.get('/api/search', (req, res) => {
-    const url = 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp'
+    const url = 'https://shc.y.qq.com/soso/fcgi-bin/search_for_qq_cp'
+    // const url = 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp'
 
     const { query, page, showSinger } = req.query
 
@@ -700,7 +701,8 @@ function registerSearch(app) {
           }
         }
 
-        const { curnum, curpage, totalnum } = songData
+        const { curnum, totalnum } = songData
+        const curpage = songData > 0 ? songData : 1
         const hasMore = 20 * (curpage - 1) + curnum < totalnum
 
         res.json({
@@ -708,12 +710,17 @@ function registerSearch(app) {
           result: {
             songs: songList,
             singer,
-            hasMore
+            hasMore,
+            curpage,
+            totalnum,
+            curnum
           }
         })
       } else {
         res.json(data)
       }
+    }).catch((e) => {
+      res.status(500).send()
     })
   })
 }
